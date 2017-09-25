@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.3.3/css/ol.css" type="text/css">
+    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+    <script src="https://openlayers.org/en/v4.3.3/build/ol.js"></script>
+    <%= javascript_include_tag "address" %>
+    
+  </head>
+
+  <body>
+  	<p>
+		<STRONG>Latitude</STRONG>
+		<%= @address.latitude %>
+	</p>
+
+	<p>
+		<STRONG>Longitude</STRONG>
+		<%= @address.longitude %>
+	</p>
+
+	<p>
+		<STRONG>Title</STRONG>
+		<%= @address.title %>
+	</p>
+
+	<p>
+		<STRONG>Address</STRONG>
+		<%= @address.address %>
+	</p>
+
+	<p>
+		<STRONG>Discription</STRONG>
+		<%= @address.discription %>
+	</p>
+
+	<%= link_to 'Edit', edit_address_path(@address) %>
+	<%= link_to 'Back to List', addresses_path %>
+
+    <div id="map" class="map" tabindex="0"></div>
+
+    <script type="text/javascript" >
+    	displayMap(<%= @address.longitude %>, <%= @address.latitude %>);
+    </script>
+
+  </body>
+</html>
